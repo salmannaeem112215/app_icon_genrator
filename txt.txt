@@ -1,0 +1,16 @@
+GOAL: Create 40 Mobile App Icons
+
+Issue: To Set mobile app icon we need icons in specific format
+        Format (ratios,folders,name)
+
+Solution:
+
+    Method1: www.appicon.co
+            Issue: 
+                1. No Api, So we cannot call api to genrate app icon
+                2. For genrating 40 app icons . will take a lot of time 
+    
+    Method2: Python code
+             1. App Icon Genrator -> image_path + folder_path = app icon 
+             2. Multi App Icon Genrator -> data.json = [app_icon,app_icon.....]
+             3. import_dependencies.bat -> used for installing packages     

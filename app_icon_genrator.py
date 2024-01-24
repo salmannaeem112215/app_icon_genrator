@@ -1,4 +1,5 @@
 import os
+import sys
 import shutil
 from PIL import Image, ImageOps
 import requests
@@ -76,13 +77,24 @@ def get_image(path_or_url):
     # Use Image.ANTIALIAS for high-quality downsampling
     return  new_img.resize((512, 512), Image.Resampling.LANCZOS)
 
+def read_parameters():
+    # Check if the correct number of command-line arguments is provided
+    if len(sys.argv) < 3:
+        print("Usage: python app_icon_genrator.py input_file output_folder")
+        sys.exit(1)
+
+    # Extract input and output paths from command-line arguments
+    input_path = sys.argv[1]
+    output_path = sys.argv[2]
+
+    return input_path, output_path
+
+
 if __name__ == "__main__":
     # Example usage with a local file path:
-    local_icon_path = r"C:\Users\PMLS\Downloads\1.png"
-    local_folder_path = r"C:\Users\PMLS\Downloads\1"
+    local_icon_path,    local_folder_path= read_parameters()
+    print("ICON PATH : "+local_icon_path)
+    print("FOLDER PATH : "+local_folder_path)
     generate_app_icons(local_icon_path, local_folder_path)
+    print("APP ICON GENRATED. PATH: " +local_folder_path)
 
-    # Example usage with an online URL:
-    online_icon_url = "https://th.bing.com/th/id/R.6af6fd9c37f0de4abb34ea0fd20acce3?rik=55mqMmrTutVR0Q&pid=ImgRaw&r=0"
-    online_folder_path = r"C:\Users\PMLS\Downloads\online"
-    generate_app_icons(online_icon_url, online_folder_path)
